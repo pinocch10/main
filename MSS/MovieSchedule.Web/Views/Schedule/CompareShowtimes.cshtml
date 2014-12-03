@@ -1,0 +1,51 @@
+﻿@model MovieSchedule.Web.Models.ComparisonModel
+@{ Layout = null;}
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Город</th>
+                <th>Кионтеатр</th>
+                <th>Формат сеансов</th>
+                <th>Кол-во сеансов</th>
+                <th>Время сеансов</th>
+                <th>Город</th>
+                <th>Кионтеатр</th>
+                <th>Формат сеансов</th>
+                <th>Кол-во сеансов</th>
+                <th>Время сеансов</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var showtime in Model.Showtimes)
+            {
+                <tr>
+                    @if (showtime.LeftShowtime != null)
+                    {
+                        @Html.Partial("RenderShowtimeComparisonRow", showtime.LeftShowtime)
+                    }
+                    else
+                    {
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    }
+                    @if (showtime.RightShowtime != null)
+                    {
+                        @Html.Partial("RenderShowtimeComparisonRow", showtime.RightShowtime)
+                    }
+                    else
+                    {
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

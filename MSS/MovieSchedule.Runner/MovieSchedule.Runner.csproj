@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A947EC2D-FAB8-45F7-849B-BE97BCABA34F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MovieSchedule.Runner</RootNamespace>
+    <AssemblyName>MovieSchedule.Runner</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Library\log4net\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MovieSchedule.Core\MovieSchedule.Core.csproj">
+      <Project>{1021378C-2B41-469D-976B-480918F607DF}</Project>
+      <Name>MovieSchedule.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieSchedule.Data\MovieSchedule.Data.csproj">
+      <Project>{012F24A8-312A-45AE-8D3C-35C6645A5F39}</Project>
+      <Name>MovieSchedule.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieSchedule.Networking\MovieSchedule.Networking.csproj">
+      <Project>{80DD0CAA-ACE8-4646-B439-5E88257E2696}</Project>
+      <Name>MovieSchedule.Networking</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieSchedule.Parsers.Afisha\MovieSchedule.Parsers.Afisha.csproj">
+      <Project>{DBCEA614-AAF4-4981-A579-D0F8AA4F2327}</Project>
+      <Name>MovieSchedule.Parsers.Afisha</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieSchedule.Parsers.CinemaPark\MovieSchedule.Parsers.CinemaPark.csproj">
+      <Project>{8758A715-7B48-4390-831B-417758D5AB41}</Project>
+      <Name>MovieSchedule.Parsers.CinemaPark</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieSchedule.Parsers.Common\MovieSchedule.Parsers.Common.csproj">
+      <Project>{30D51A62-27B5-40CE-B9B3-8AD3006722E5}</Project>
+      <Name>MovieSchedule.Parsers.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieSchedule.Parsers.Kinometro\MovieSchedule.Parsers.Kinometro.csproj">
+      <Project>{213BB172-FEE3-43D2-93CC-0AAD45B0E55A}</Project>
+      <Name>MovieSchedule.Parsers.Kinometro</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MovieSchedule.Parsers.Kinopoisk\MovieSchedule.Parsers.Kinopoisk.csproj">
+      <Project>{FF025151-EE7E-4C97-A2C9-948499A0CF2E}</Project>
+      <Name>MovieSchedule.Parsers.Kinopoisk</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

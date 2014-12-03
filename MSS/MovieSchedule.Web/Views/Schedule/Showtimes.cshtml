@@ -1,0 +1,159 @@
+﻿@model MovieSchedule.Web.Models.MovieScheduleModel
+@{ Layout = null;}
+<h3>@Model.Title</h3>
+<h4>@Model.OriginalTitle</h4>
+<div>
+    <span class="label label-default">Дата выхода в прокат</span>
+    <span class="label label-primary">@Model.MovieReleaseDate.ToString("yyyy-MM-dd")</span>
+</div>
+<div>
+    <span class="label label-default">Неделя проката</span>
+    <span class="label label-primary">@(Model.Showtimes.Any() ? Model.Showtimes.Min(x => x.Week) : 0)</span>
+    @*</div>
+<div>
+    <span class="label label-default" style="width: 125px">Формат фильма</span>
+    <span class="label label-primary">@Model.MovieFormat</span>
+    </div>
+<div>*@
+    <span class="label label-default">Всего сеансов</span>
+    <span class="label label-primary">@Model.ShowtimesCount</span>
+</div>
+<button class="btn btn-link" type="button" id="btnReset">Сбросить фильтры</button>
+<button class="btn btn-link navbar-right" type="button" id="btnExport">Экспорт в .xlsx</button>
+
+<div class="clearfix"></div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @if (Model.Countries.Count > 1)
+                    {
+                        @Html.DropDownListFor(x => x.Countries, new SelectList(Model.Countries, "Id", "Name"), "Страна", new { style = "width:250px;" })
+                        <br />
+                    }
+                    @if (Model.FederalDistricts.Count > 0)
+                    {
+                        @Html.DropDownListFor(x => x.FederalDistricts, new SelectList(Model.FederalDistricts, "Id", "Name"), "Федеральный округ", new { style = "width:250px;" })
+                        <br />
+                    }
+                    @Html.DropDownListFor(x => x.Cities, new SelectList(Model.Cities, "Id", "Name"), "Город", new { style = "width:250px;" })
+                </th>
+                <th>
+                    @if (Model.CinemaNetworks.Count > 0)
+                    {
+                        @Html.DropDownListFor(x => x.CinemaNetworks, new SelectList(Model.CinemaNetworks, "Id", "Name"), "Сеть кинотеатров", new { style = "width:250px;" })
+                        <br />
+                    }
+                    @Html.DropDownListFor(x => x.Cinemas, new SelectList(Model.Cinemas, "Id", "DisplayName"), "Кинотеатр", new { style = "width:250px;" })
+                </th>
+                <th title="Формат 2D может включать в себя 35мм, dvd и blu-ray">Формат сеансов*</th>
+                <th>Кол-во сеансов</th>
+                <th>Время сеансов</th>
+                <th>Отклонение</th>
+            </tr>
+        </thead>
+
+        @*<thead>
+            <tr>
+                <th>Город</th>
+                <th>Кионтеатр</th>
+                <th>Формат сеансов</th>
+                <th>Кол-во сеансов</th>
+                <th>Время сеансов</th>
+            </tr>
+        </thead>*@
+        <tbody>
+            <tr>
+                <td></td>
+                <td>Записей: @Model.Showtimes.Count</td>
+                <td></td>
+                <td>Итого: @Model.ShowtimesCount</td>
+                <td></td>
+                <td class="deviation">
+                    @{
+                        var positive = Model.Showtimes.Where(x => x.Deviation > 0).ToArray();
+                        var negative = Model.Showtimes.Where(x => x.Deviation < 0).ToArray();
+                        if (positive.Any())
+                        {
+                        <span class="increase">+@positive.Sum(x => x.Deviation)</span>
+                        }
+                        if (negative.Any())
+                        {
+                        <span class="decrease">@negative.Sum(x => x.Deviation)</span>
+                        }
+                    }
+                </td>
+            </tr>
+            @foreach (var showtime in Model.Showtimes)
+            {
+                <tr>
+                    <td>@showtime.City</td>
+                    <td>@showtime.CinemaName</td>
+                    @if (showtime.Format == "2D")
+                    {
+                        <td title="Формат 2D может включать в себя 35мм, dvd и blu-ray">@showtime.Format</td>
+                    }
+                    else
+                    {
+                        <td>@showtime.Format</td>
+                    }
+
+                    @*<td>@{
+                var format = showtime.Format;
+                switch (showtime.Format)
+                {
+                    case "TwoD":
+                        format = "2D";
+                        break;
+                    case "ThreeD":
+                        format = "3D";
+                        break;
+                    default:
+                        format = showtime.Format;
+                        break;
+                }
+                format.ToString();
+                    }</td>*@
+                    <td>@showtime.SessionsCount</td>
+                    <td>@showtime.Sessions</td>
+                    <td class="deviation">@if (showtime.Deviation > 0)
+                                          {
+                        <span class="increase" title="@showtime.SnapshotSessions">+@showtime.Deviation</span>
+                                          }
+                        @if (showtime.Deviation < 0)
+                        {
+                            <span class="decrease" title="@showtime.SnapshotSessions">@showtime.Deviation</span>
+                        }</td>
+                </tr>
+            }
+            <tr>
+                <td></td>
+                <td>Записей: @Model.Showtimes.Count</td>
+                <td></td>
+                <td>Итого: @Model.ShowtimesCount</td>
+                <td></td>
+                <td class="deviation">
+                    @{
+                        if (positive.Any())
+                        {
+                        <span class="increase">+@positive.Sum(x => x.Deviation)</span>
+                        }
+                        if (negative.Any())
+                        {
+                        <span class="decrease">@negative.Sum(x => x.Deviation)</span>
+                        }
+                    }
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+@*@if (Model.OffCinemas.Count > 0)
+{
+    <div class="table-responsive">
+        @Html.Partial("GetSwitchedOffCinemas", Model.OffCinemas)
+    </div>
+}*@

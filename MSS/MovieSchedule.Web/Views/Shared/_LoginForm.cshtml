@@ -1,0 +1,17 @@
+﻿<div class="container">
+    @using (Html.BeginForm("LogIn", "User", FormMethod.Post, new { @class = "form-signin" }))
+    {
+        <h2>СеансПро</h2>
+        <input type="text" class="form-control" name="Username" placeholder="Имя пользователя">
+        <input type="password" class="form-control" name="Password" placeholder="Пароль">
+        
+        <div class="input-group">
+            <span class="input-group-addon">
+                <input id="RememberMe" type="checkbox" value="true" name="RememberMe" />
+                <input type="hidden" value="false" name="RememberMe" />
+            </span>
+            <button class="btn btn-primary btn-block" type="submit">Войти</button>
+        </div>
+        <!-- /input-group -->
+    }
+</div>

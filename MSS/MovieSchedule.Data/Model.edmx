@@ -1,0 +1,1844 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MovieScheduleStatsModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MovieScheduleStatsModelStoreContainer">
+          <EntitySet Name="Cinema" EntityType="MovieScheduleStatsModel.Store.Cinema" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CinemaNetwork" EntityType="MovieScheduleStatsModel.Store.CinemaNetwork" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CinemaSource" EntityType="MovieScheduleStatsModel.Store.CinemaSource" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="City" EntityType="MovieScheduleStatsModel.Store.City" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CitySource" EntityType="MovieScheduleStatsModel.Store.CitySource" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Country" EntityType="MovieScheduleStatsModel.Store.Country" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Distributor" EntityType="MovieScheduleStatsModel.Store.Distributor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DistributorMovie" EntityType="MovieScheduleStatsModel.Store.DistributorMovie" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Feature" EntityType="MovieScheduleStatsModel.Store.Feature" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FederalDistrict" EntityType="MovieScheduleStatsModel.Store.FederalDistrict" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Movie" EntityType="MovieScheduleStatsModel.Store.Movie" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MovieSource" EntityType="MovieScheduleStatsModel.Store.MovieSource" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ParseRun" EntityType="MovieScheduleStatsModel.Store.ParseRun" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ParseRunInfo" EntityType="MovieScheduleStatsModel.Store.ParseRunInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Session" EntityType="MovieScheduleStatsModel.Store.Session" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Showtime" EntityType="MovieScheduleStatsModel.Store.Showtime" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ShowtimeSession" EntityType="MovieScheduleStatsModel.Store.ShowtimeSession" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ShowtimeSnapshot" EntityType="MovieScheduleStatsModel.Store.ShowtimeSnapshot" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Source" EntityType="MovieScheduleStatsModel.Store.Source" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TargetSite" EntityType="MovieScheduleStatsModel.Store.TargetSite" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="MovieScheduleStatsModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserFeature" EntityType="MovieScheduleStatsModel.Store.UserFeature" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Cinema_CinemaNetwork" Association="MovieScheduleStatsModel.Store.FK_Cinema_CinemaNetwork">
+            <End Role="CinemaNetwork" EntitySet="CinemaNetwork" />
+            <End Role="Cinema" EntitySet="Cinema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cinema_City" Association="MovieScheduleStatsModel.Store.FK_Cinema_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Cinema" EntitySet="Cinema" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CinemaSource_Cinema" Association="MovieScheduleStatsModel.Store.FK_CinemaSource_Cinema">
+            <End Role="Cinema" EntitySet="Cinema" />
+            <End Role="CinemaSource" EntitySet="CinemaSource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CinemaSource_TargetSite" Association="MovieScheduleStatsModel.Store.FK_CinemaSource_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSite" />
+            <End Role="CinemaSource" EntitySet="CinemaSource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_Country" Association="MovieScheduleStatsModel.Store.FK_City_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_FederalDistrict" Association="MovieScheduleStatsModel.Store.FK_City_FederalDistrict">
+            <End Role="FederalDistrict" EntitySet="FederalDistrict" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitySource_City1" Association="MovieScheduleStatsModel.Store.FK_CitySource_City1">
+            <End Role="City" EntitySet="City" />
+            <End Role="CitySource" EntitySet="CitySource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitySource_TargetSite" Association="MovieScheduleStatsModel.Store.FK_CitySource_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSite" />
+            <End Role="CitySource" EntitySet="CitySource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistributorMovie_Distributor" Association="MovieScheduleStatsModel.Store.FK_DistributorMovie_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="DistributorMovie" EntitySet="DistributorMovie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DistributorMovie_Movie" Association="MovieScheduleStatsModel.Store.FK_DistributorMovie_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="DistributorMovie" EntitySet="DistributorMovie" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovieSource_Movie" Association="MovieScheduleStatsModel.Store.FK_MovieSource_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="MovieSource" EntitySet="MovieSource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovieSource_Movie1" Association="MovieScheduleStatsModel.Store.FK_MovieSource_Movie1">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="MovieSource" EntitySet="MovieSource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovieSource_TargetSite" Association="MovieScheduleStatsModel.Store.FK_MovieSource_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSite" />
+            <End Role="MovieSource" EntitySet="MovieSource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovieSource_TargetSite1" Association="MovieScheduleStatsModel.Store.FK_MovieSource_TargetSite1">
+            <End Role="TargetSite" EntitySet="TargetSite" />
+            <End Role="MovieSource" EntitySet="MovieSource" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParseRunInfo_ParseRun" Association="MovieScheduleStatsModel.Store.FK_ParseRunInfo_ParseRun">
+            <End Role="ParseRun" EntitySet="ParseRun" />
+            <End Role="ParseRunInfo" EntitySet="ParseRunInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParseRunInfo_TargetSite" Association="MovieScheduleStatsModel.Store.FK_ParseRunInfo_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSite" />
+            <End Role="ParseRunInfo" EntitySet="ParseRunInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Satellites" Association="MovieScheduleStatsModel.Store.FK_Satellites">
+            <End Role="City" EntitySet="City" />
+            <End Role="City1" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Showtime_Cinema" Association="MovieScheduleStatsModel.Store.FK_Showtime_Cinema">
+            <End Role="Cinema" EntitySet="Cinema" />
+            <End Role="Showtime" EntitySet="Showtime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Showtime_Movie" Association="MovieScheduleStatsModel.Store.FK_Showtime_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="Showtime" EntitySet="Showtime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Showtime_ParseRun" Association="MovieScheduleStatsModel.Store.FK_Showtime_ParseRun">
+            <End Role="ParseRun" EntitySet="ParseRun" />
+            <End Role="Showtime" EntitySet="Showtime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Showtime_TargetSite" Association="MovieScheduleStatsModel.Store.FK_Showtime_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSite" />
+            <End Role="Showtime" EntitySet="Showtime" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowtimeSession_Session" Association="MovieScheduleStatsModel.Store.FK_ShowtimeSession_Session">
+            <End Role="Session" EntitySet="Session" />
+            <End Role="ShowtimeSession" EntitySet="ShowtimeSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowtimeSession_Showtime" Association="MovieScheduleStatsModel.Store.FK_ShowtimeSession_Showtime">
+            <End Role="Showtime" EntitySet="Showtime" />
+            <End Role="ShowtimeSession" EntitySet="ShowtimeSession" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowtimeSnapshot_ParseRun" Association="MovieScheduleStatsModel.Store.FK_ShowtimeSnapshot_ParseRun">
+            <End Role="ParseRun" EntitySet="ParseRun" />
+            <End Role="ShowtimeSnapshot" EntitySet="ShowtimeSnapshot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowtimeSnapshot_TargetSite" Association="MovieScheduleStatsModel.Store.FK_ShowtimeSnapshot_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSite" />
+            <End Role="ShowtimeSnapshot" EntitySet="ShowtimeSnapshot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowtimesSnapshot_Cinema" Association="MovieScheduleStatsModel.Store.FK_ShowtimesSnapshot_Cinema">
+            <End Role="Cinema" EntitySet="Cinema" />
+            <End Role="ShowtimeSnapshot" EntitySet="ShowtimeSnapshot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowtimesSnapshot_Movie" Association="MovieScheduleStatsModel.Store.FK_ShowtimesSnapshot_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="ShowtimeSnapshot" EntitySet="ShowtimeSnapshot" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Source_Cinema" Association="MovieScheduleStatsModel.Store.FK_Source_Cinema">
+            <End Role="Cinema" EntitySet="Cinema" />
+            <End Role="Source" EntitySet="Source" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Source_City" Association="MovieScheduleStatsModel.Store.FK_Source_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Source" EntitySet="Source" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Source_Movie" Association="MovieScheduleStatsModel.Store.FK_Source_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="Source" EntitySet="Source" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Source_TargetSite" Association="MovieScheduleStatsModel.Store.FK_Source_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSite" />
+            <End Role="Source" EntitySet="Source" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Distributor" Association="MovieScheduleStatsModel.Store.FK_User_Distributor">
+            <End Role="Distributor" EntitySet="Distributor" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFeature_Feature" Association="MovieScheduleStatsModel.Store.FK_UserFeature_Feature">
+            <End Role="Feature" EntitySet="Feature" />
+            <End Role="UserFeature" EntitySet="UserFeature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFeature_User" Association="MovieScheduleStatsModel.Store.FK_UserFeature_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserFeature" EntitySet="UserFeature" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Cinema">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="MasterListBased" Type="bit" Nullable="false" />
+          <Property Name="OriginalCity" Type="nvarchar" MaxLength="256" />
+          <Property Name="CinemaNetworkId" Type="int" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CinemaNetwork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CinemaSource">
+          <Key>
+            <PropertyRef Name="CinemaId" />
+            <PropertyRef Name="TargetSiteId" />
+          </Key>
+          <Property Name="CinemaId" Type="int" Nullable="false" />
+          <Property Name="TargetSiteId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="Parameter" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="FederalDistrictId" Type="int" />
+        </EntityType>
+        <EntityType Name="CitySource">
+          <Key>
+            <PropertyRef Name="CityId" />
+            <PropertyRef Name="TargetSiteId" />
+          </Key>
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="TargetSiteId" Type="int" Nullable="false" />
+          <Property Name="Parameter" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="URL" Type="nvarchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="60" />
+          <Property Name="Code" Type="char" Nullable="false" MaxLength="2" />
+        </EntityType>
+        <EntityType Name="Distributor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="128" />
+          <Property Name="Info" Type="nvarchar" MaxLength="512" />
+          <Property Name="Url" Type="nvarchar" MaxLength="200" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+          <Property Name="Version" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DistributorMovie">
+          <Key>
+            <PropertyRef Name="DistributorId" />
+            <PropertyRef Name="MovieId" />
+          </Key>
+          <Property Name="DistributorId" Type="int" Nullable="false" />
+          <Property Name="MovieId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="FederalDistrict">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="256" />
+          <Property Name="OriginalTitle" Type="nvarchar" MaxLength="256" />
+          <Property Name="ReleaseDate" Type="datetime" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="Archived" Type="bit" Nullable="false" />
+          <Property Name="Format" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="PreviewDate" Type="datetime" />
+          <Property Name="URL" Type="nvarchar" MaxLength="255" />
+          <Property Name="Suspended" Type="bit" Nullable="false" />
+          <Property Name="ReleaseDateGlobal" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MovieSource">
+          <Key>
+            <PropertyRef Name="MovieId" />
+            <PropertyRef Name="TargetSiteId" />
+          </Key>
+          <Property Name="MovieId" Type="int" Nullable="false" />
+          <Property Name="TargetSiteId" Type="int" Nullable="false" />
+          <Property Name="URL" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Parameter" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="ParseRun">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Started" Type="datetime" Nullable="false" />
+          <Property Name="Completed" Type="datetime" />
+          <Property Name="ShowtimesCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParseRunInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ParseRunId" Type="int" Nullable="false" />
+          <Property Name="TargetSiteId" Type="int" Nullable="false" />
+          <Property Name="ShowtimesCountNew" Type="int" Nullable="false" />
+          <Property Name="ShowtimesCountUpdated" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Time" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="Hour" Type="int" Nullable="false" />
+          <Property Name="Minute" Type="int" Nullable="false" />
+          <Property Name="OrderIndex" Type="int" />
+        </EntityType>
+        <EntityType Name="Showtime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SessionsRaw" Type="varchar" Nullable="false" MaxLength="1024" />
+          <Property Name="CinemaId" Type="int" Nullable="false" />
+          <Property Name="Additional" Type="nvarchar" MaxLength="128" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="MovieId" Type="int" Nullable="false" />
+          <Property Name="SessionsCount" Type="int" Nullable="false" />
+          <Property Name="URL" Type="nvarchar" MaxLength="255" />
+          <Property Name="SessionsFormat" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="TargetSiteId" Type="int" Nullable="false" />
+          <Property Name="PartialyAdded" Type="bit" Nullable="false" />
+          <Property Name="ParseRunId" Type="int" Nullable="false" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="LastUpdate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ShowtimeSession">
+          <Key>
+            <PropertyRef Name="ShowtimeId" />
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="ShowtimeId" Type="int" Nullable="false" />
+          <Property Name="SessionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShowtimeSnapshot">
+          <Key>
+            <PropertyRef Name="CinemaId" />
+            <PropertyRef Name="MovieId" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="TargetSiteId" />
+            <PropertyRef Name="ParseRunId" />
+            <PropertyRef Name="SessionsFormat" />
+          </Key>
+          <Property Name="CinemaId" Type="int" Nullable="false" />
+          <Property Name="MovieId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="TargetSiteId" Type="int" Nullable="false" />
+          <Property Name="ParseRunId" Type="int" Nullable="false" />
+          <Property Name="SessionsCount" Type="int" Nullable="false" />
+          <Property Name="Sessions" Type="varchar" Nullable="false" MaxLength="1024" />
+          <Property Name="SessionsFormat" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Source">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="int" />
+          <Property Name="MovieId" Type="int" />
+          <Property Name="CinemaId" Type="int" />
+          <Property Name="Parameter" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="TargetSite" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="URL" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="Text" Type="nvarchar" MaxLength="128" />
+          <Property Name="TargetSiteId" Type="int" Nullable="false" />
+          <Property Name="OriginalCity" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="TargetSite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Shortcut" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Priority" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="PasswordHash" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="DistributorId" Type="int" />
+        </EntityType>
+        <EntityType Name="UserFeature">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="FeatureId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="FeatureId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cinema_CinemaNetwork">
+          <End Role="CinemaNetwork" Type="MovieScheduleStatsModel.Store.CinemaNetwork" Multiplicity="0..1" />
+          <End Role="Cinema" Type="MovieScheduleStatsModel.Store.Cinema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CinemaNetwork">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cinema">
+              <PropertyRef Name="CinemaNetworkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cinema_City">
+          <End Role="City" Type="MovieScheduleStatsModel.Store.City" Multiplicity="1" />
+          <End Role="Cinema" Type="MovieScheduleStatsModel.Store.Cinema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cinema">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CinemaSource_Cinema">
+          <End Role="Cinema" Type="MovieScheduleStatsModel.Store.Cinema" Multiplicity="1" />
+          <End Role="CinemaSource" Type="MovieScheduleStatsModel.Store.CinemaSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinema">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CinemaSource">
+              <PropertyRef Name="CinemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CinemaSource_TargetSite">
+          <End Role="TargetSite" Type="MovieScheduleStatsModel.Store.TargetSite" Multiplicity="1" />
+          <End Role="CinemaSource" Type="MovieScheduleStatsModel.Store.CinemaSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CinemaSource">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_Country">
+          <End Role="Country" Type="MovieScheduleStatsModel.Store.Country" Multiplicity="1" />
+          <End Role="City" Type="MovieScheduleStatsModel.Store.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_FederalDistrict">
+          <End Role="FederalDistrict" Type="MovieScheduleStatsModel.Store.FederalDistrict" Multiplicity="0..1" />
+          <End Role="City" Type="MovieScheduleStatsModel.Store.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FederalDistrict">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="FederalDistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitySource_City1">
+          <End Role="City" Type="MovieScheduleStatsModel.Store.City" Multiplicity="1" />
+          <End Role="CitySource" Type="MovieScheduleStatsModel.Store.CitySource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CitySource">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitySource_TargetSite">
+          <End Role="TargetSite" Type="MovieScheduleStatsModel.Store.TargetSite" Multiplicity="1" />
+          <End Role="CitySource" Type="MovieScheduleStatsModel.Store.CitySource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CitySource">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistributorMovie_Distributor">
+          <End Role="Distributor" Type="MovieScheduleStatsModel.Store.Distributor" Multiplicity="1" />
+          <End Role="DistributorMovie" Type="MovieScheduleStatsModel.Store.DistributorMovie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistributorMovie">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DistributorMovie_Movie">
+          <End Role="Movie" Type="MovieScheduleStatsModel.Store.Movie" Multiplicity="1" />
+          <End Role="DistributorMovie" Type="MovieScheduleStatsModel.Store.DistributorMovie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DistributorMovie">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovieSource_Movie">
+          <End Role="Movie" Type="MovieScheduleStatsModel.Store.Movie" Multiplicity="1" />
+          <End Role="MovieSource" Type="MovieScheduleStatsModel.Store.MovieSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovieSource">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovieSource_Movie1">
+          <End Role="Movie" Type="MovieScheduleStatsModel.Store.Movie" Multiplicity="1" />
+          <End Role="MovieSource" Type="MovieScheduleStatsModel.Store.MovieSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovieSource">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovieSource_TargetSite">
+          <End Role="TargetSite" Type="MovieScheduleStatsModel.Store.TargetSite" Multiplicity="1" />
+          <End Role="MovieSource" Type="MovieScheduleStatsModel.Store.MovieSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovieSource">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovieSource_TargetSite1">
+          <End Role="TargetSite" Type="MovieScheduleStatsModel.Store.TargetSite" Multiplicity="1" />
+          <End Role="MovieSource" Type="MovieScheduleStatsModel.Store.MovieSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovieSource">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParseRunInfo_ParseRun">
+          <End Role="ParseRun" Type="MovieScheduleStatsModel.Store.ParseRun" Multiplicity="1" />
+          <End Role="ParseRunInfo" Type="MovieScheduleStatsModel.Store.ParseRunInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParseRun">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParseRunInfo">
+              <PropertyRef Name="ParseRunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParseRunInfo_TargetSite">
+          <End Role="TargetSite" Type="MovieScheduleStatsModel.Store.TargetSite" Multiplicity="1" />
+          <End Role="ParseRunInfo" Type="MovieScheduleStatsModel.Store.ParseRunInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParseRunInfo">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Satellites">
+          <End Role="City" Type="MovieScheduleStatsModel.Store.City" Multiplicity="0..1" />
+          <End Role="City1" Type="MovieScheduleStatsModel.Store.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City1">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Showtime_Cinema">
+          <End Role="Cinema" Type="MovieScheduleStatsModel.Store.Cinema" Multiplicity="1" />
+          <End Role="Showtime" Type="MovieScheduleStatsModel.Store.Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinema">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="CinemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Showtime_Movie">
+          <End Role="Movie" Type="MovieScheduleStatsModel.Store.Movie" Multiplicity="1" />
+          <End Role="Showtime" Type="MovieScheduleStatsModel.Store.Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Showtime_ParseRun">
+          <End Role="ParseRun" Type="MovieScheduleStatsModel.Store.ParseRun" Multiplicity="1" />
+          <End Role="Showtime" Type="MovieScheduleStatsModel.Store.Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParseRun">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="ParseRunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Showtime_TargetSite">
+          <End Role="TargetSite" Type="MovieScheduleStatsModel.Store.TargetSite" Multiplicity="1" />
+          <End Role="Showtime" Type="MovieScheduleStatsModel.Store.Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowtimeSession_Session">
+          <End Role="Session" Type="MovieScheduleStatsModel.Store.Session" Multiplicity="1" />
+          <End Role="ShowtimeSession" Type="MovieScheduleStatsModel.Store.ShowtimeSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Session">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowtimeSession">
+              <PropertyRef Name="SessionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowtimeSession_Showtime">
+          <End Role="Showtime" Type="MovieScheduleStatsModel.Store.Showtime" Multiplicity="1" />
+          <End Role="ShowtimeSession" Type="MovieScheduleStatsModel.Store.ShowtimeSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Showtime">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowtimeSession">
+              <PropertyRef Name="ShowtimeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowtimeSnapshot_ParseRun">
+          <End Role="ParseRun" Type="MovieScheduleStatsModel.Store.ParseRun" Multiplicity="1" />
+          <End Role="ShowtimeSnapshot" Type="MovieScheduleStatsModel.Store.ShowtimeSnapshot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParseRun">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowtimeSnapshot">
+              <PropertyRef Name="ParseRunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowtimeSnapshot_TargetSite">
+          <End Role="TargetSite" Type="MovieScheduleStatsModel.Store.TargetSite" Multiplicity="1" />
+          <End Role="ShowtimeSnapshot" Type="MovieScheduleStatsModel.Store.ShowtimeSnapshot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowtimeSnapshot">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowtimesSnapshot_Cinema">
+          <End Role="Cinema" Type="MovieScheduleStatsModel.Store.Cinema" Multiplicity="1" />
+          <End Role="ShowtimeSnapshot" Type="MovieScheduleStatsModel.Store.ShowtimeSnapshot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinema">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowtimeSnapshot">
+              <PropertyRef Name="CinemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowtimesSnapshot_Movie">
+          <End Role="Movie" Type="MovieScheduleStatsModel.Store.Movie" Multiplicity="1" />
+          <End Role="ShowtimeSnapshot" Type="MovieScheduleStatsModel.Store.ShowtimeSnapshot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowtimeSnapshot">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Source_Cinema">
+          <End Role="Cinema" Type="MovieScheduleStatsModel.Store.Cinema" Multiplicity="0..1" />
+          <End Role="Source" Type="MovieScheduleStatsModel.Store.Source" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinema">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Source">
+              <PropertyRef Name="CinemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Source_City">
+          <End Role="City" Type="MovieScheduleStatsModel.Store.City" Multiplicity="0..1" />
+          <End Role="Source" Type="MovieScheduleStatsModel.Store.Source" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Source">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Source_Movie">
+          <End Role="Movie" Type="MovieScheduleStatsModel.Store.Movie" Multiplicity="0..1" />
+          <End Role="Source" Type="MovieScheduleStatsModel.Store.Source" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Source">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Source_TargetSite">
+          <End Role="TargetSite" Type="MovieScheduleStatsModel.Store.TargetSite" Multiplicity="1" />
+          <End Role="Source" Type="MovieScheduleStatsModel.Store.Source" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Source">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Distributor">
+          <End Role="Distributor" Type="MovieScheduleStatsModel.Store.Distributor" Multiplicity="0..1" />
+          <End Role="User" Type="MovieScheduleStatsModel.Store.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFeature_Feature">
+          <End Role="Feature" Type="MovieScheduleStatsModel.Store.Feature" Multiplicity="1" />
+          <End Role="UserFeature" Type="MovieScheduleStatsModel.Store.UserFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Feature">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFeature">
+              <PropertyRef Name="FeatureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFeature_User">
+          <End Role="User" Type="MovieScheduleStatsModel.Store.User" Multiplicity="1" />
+          <End Role="UserFeature" Type="MovieScheduleStatsModel.Store.UserFeature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFeature">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MovieScheduleStatsModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MovieScheduleStatsEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="CinemaSources" EntityType="MovieScheduleStatsModel.CinemaSource" />
+          <EntitySet Name="CitySources" EntityType="MovieScheduleStatsModel.CitySource" />
+          <EntitySet Name="Countries" EntityType="MovieScheduleStatsModel.Country" />
+          <EntitySet Name="Distributors" EntityType="MovieScheduleStatsModel.Distributor" />
+          <EntitySet Name="Sources" EntityType="MovieScheduleStatsModel.Source" />
+          <EntitySet Name="TargetSites" EntityType="MovieScheduleStatsModel.TargetSite" />
+          <AssociationSet Name="FK_CinemaSource_TargetSite" Association="MovieScheduleStatsModel.FK_CinemaSource_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSites" />
+            <End Role="CinemaSource" EntitySet="CinemaSources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitySource_TargetSite" Association="MovieScheduleStatsModel.FK_CitySource_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSites" />
+            <End Role="CitySource" EntitySet="CitySources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Source_TargetSite" Association="MovieScheduleStatsModel.FK_Source_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSites" />
+            <End Role="Source" EntitySet="Sources" />
+          </AssociationSet>
+          <EntitySet Name="Movies" EntityType="MovieScheduleStatsModel.Movie" />
+          <AssociationSet Name="FK_Source_Movie" Association="MovieScheduleStatsModel.FK_Source_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="Source" EntitySet="Sources" />
+          </AssociationSet>
+          <AssociationSet Name="DistributorMovie" Association="MovieScheduleStatsModel.DistributorMovie">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="Movie" EntitySet="Movies" />
+          </AssociationSet>
+          <EntitySet Name="Cities" EntityType="MovieScheduleStatsModel.City" />
+          <AssociationSet Name="FK_City_Country" Association="MovieScheduleStatsModel.FK_City_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CitySource_City1" Association="MovieScheduleStatsModel.FK_CitySource_City1">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="CitySource" EntitySet="CitySources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Satellites" Association="MovieScheduleStatsModel.FK_Satellites">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="City1" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Source_City" Association="MovieScheduleStatsModel.FK_Source_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Source" EntitySet="Sources" />
+          </AssociationSet>
+          <EntitySet Name="ParseRuns" EntityType="MovieScheduleStatsModel.ParseRun" />
+          <EntitySet Name="ParseRunInfoes" EntityType="MovieScheduleStatsModel.ParseRunInfo" />
+          <AssociationSet Name="FK_ParseRunInfo_ParseRun" Association="MovieScheduleStatsModel.FK_ParseRunInfo_ParseRun">
+            <End Role="ParseRun" EntitySet="ParseRuns" />
+            <End Role="ParseRunInfo" EntitySet="ParseRunInfoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParseRunInfo_TargetSite" Association="MovieScheduleStatsModel.FK_ParseRunInfo_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSites" />
+            <End Role="ParseRunInfo" EntitySet="ParseRunInfoes" />
+          </AssociationSet>
+          <EntitySet Name="Features" EntityType="MovieScheduleStatsModel.Feature" />
+          <EntitySet Name="Users" EntityType="MovieScheduleStatsModel.User" />
+          <AssociationSet Name="UserFeature" Association="MovieScheduleStatsModel.UserFeature">
+            <End Role="Feature" EntitySet="Features" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="FederalDistricts" EntityType="MovieScheduleStatsModel.FederalDistrict" />
+          <AssociationSet Name="FK_City_FederalDistrict" Association="MovieScheduleStatsModel.FK_City_FederalDistrict">
+            <End Role="FederalDistrict" EntitySet="FederalDistricts" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <EntitySet Name="CinemaNetworks" EntityType="MovieScheduleStatsModel.CinemaNetwork" />
+          <EntitySet Name="Cinemas" EntityType="MovieScheduleStatsModel.Cinema" />
+          <AssociationSet Name="FK_Cinema_CinemaNetwork" Association="MovieScheduleStatsModel.FK_Cinema_CinemaNetwork">
+            <End Role="CinemaNetwork" EntitySet="CinemaNetworks" />
+            <End Role="Cinema" EntitySet="Cinemas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cinema_City" Association="MovieScheduleStatsModel.FK_Cinema_City">
+            <End Role="City" EntitySet="Cities" />
+            <End Role="Cinema" EntitySet="Cinemas" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CinemaSource_Cinema" Association="MovieScheduleStatsModel.FK_CinemaSource_Cinema">
+            <End Role="Cinema" EntitySet="Cinemas" />
+            <End Role="CinemaSource" EntitySet="CinemaSources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Source_Cinema" Association="MovieScheduleStatsModel.FK_Source_Cinema">
+            <End Role="Cinema" EntitySet="Cinemas" />
+            <End Role="Source" EntitySet="Sources" />
+          </AssociationSet>
+          <EntitySet Name="MovieSources" EntityType="MovieScheduleStatsModel.MovieSource" />
+          <AssociationSet Name="FK_MovieSource_Movie" Association="MovieScheduleStatsModel.FK_MovieSource_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="MovieSource" EntitySet="MovieSources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MovieSource_TargetSite" Association="MovieScheduleStatsModel.FK_MovieSource_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSites" />
+            <End Role="MovieSource" EntitySet="MovieSources" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Distributor" Association="MovieScheduleStatsModel.FK_User_Distributor">
+            <End Role="Distributor" EntitySet="Distributors" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <EntitySet Name="ShowtimeSnapshots" EntityType="MovieScheduleStatsModel.ShowtimeSnapshot" />
+          <AssociationSet Name="FK_ShowtimesSnapshot_Cinema" Association="MovieScheduleStatsModel.FK_ShowtimesSnapshot_Cinema">
+            <End Role="Cinema" EntitySet="Cinemas" />
+            <End Role="ShowtimeSnapshot" EntitySet="ShowtimeSnapshots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowtimesSnapshot_Movie" Association="MovieScheduleStatsModel.FK_ShowtimesSnapshot_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="ShowtimeSnapshot" EntitySet="ShowtimeSnapshots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowtimeSnapshot_ParseRun" Association="MovieScheduleStatsModel.FK_ShowtimeSnapshot_ParseRun">
+            <End Role="ParseRun" EntitySet="ParseRuns" />
+            <End Role="ShowtimeSnapshot" EntitySet="ShowtimeSnapshots" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShowtimesSnapshot_TargetSite" Association="MovieScheduleStatsModel.FK_ShowtimesSnapshot_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSites" />
+            <End Role="ShowtimeSnapshot" EntitySet="ShowtimeSnapshots" />
+          </AssociationSet>
+          <EntitySet Name="Showtimes" EntityType="MovieScheduleStatsModel.Showtime" />
+          <AssociationSet Name="FK_Showtime_Cinema" Association="MovieScheduleStatsModel.FK_Showtime_Cinema">
+            <End Role="Cinema" EntitySet="Cinemas" />
+            <End Role="Showtime" EntitySet="Showtimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Showtime_Movie" Association="MovieScheduleStatsModel.FK_Showtime_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="Showtime" EntitySet="Showtimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Showtime_ParseRun" Association="MovieScheduleStatsModel.FK_Showtime_ParseRun">
+            <End Role="ParseRun" EntitySet="ParseRuns" />
+            <End Role="Showtime" EntitySet="Showtimes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Showtime_TargetSite" Association="MovieScheduleStatsModel.FK_Showtime_TargetSite">
+            <End Role="TargetSite" EntitySet="TargetSites" />
+            <End Role="Showtime" EntitySet="Showtimes" />
+          </AssociationSet>
+          <EntitySet Name="Sessions" EntityType="MovieScheduleStatsModel.Session" />
+          <AssociationSet Name="ShowtimeSession" Association="MovieScheduleStatsModel.ShowtimeSession">
+            <End Role="Session" EntitySet="Sessions" />
+            <End Role="Showtime" EntitySet="Showtimes" />
+          </AssociationSet>
+          <FunctionImport Name="spCleanShowtimes">
+            <Parameter Name="todayLeft" Mode="In" Type="DateTime" />
+            <Parameter Name="todayRight" Mode="In" Type="DateTime" />
+            <Parameter Name="today" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="CleanShowtimes">
+            <Parameter Name="todayLeft" Mode="In" Type="DateTime" />
+            <Parameter Name="todayRight" Mode="In" Type="DateTime" />
+            <Parameter Name="today" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          </EntityContainer>
+        <EntityType Name="CinemaSource">
+          <Key>
+            <PropertyRef Name="CinemaId" />
+            <PropertyRef Name="TargetSiteId" />
+          </Key>
+          <Property Type="Int32" Name="CinemaId" Nullable="false" />
+          <Property Type="Int32" Name="TargetSiteId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TargetSite" Relationship="MovieScheduleStatsModel.FK_CinemaSource_TargetSite" FromRole="CinemaSource" ToRole="TargetSite" />
+          <Property Type="String" Name="Parameter" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cinema" Relationship="MovieScheduleStatsModel.FK_CinemaSource_Cinema" FromRole="CinemaSource" ToRole="Cinema" />
+        </EntityType>
+        <EntityType Name="CitySource">
+          <Key>
+            <PropertyRef Name="CityId" />
+            <PropertyRef Name="TargetSiteId" />
+          </Key>
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="Int32" Name="TargetSiteId" Nullable="false" />
+          <Property Type="String" Name="Parameter" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="URL" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TargetSite" Relationship="MovieScheduleStatsModel.FK_CitySource_TargetSite" FromRole="CitySource" ToRole="TargetSite" />
+          <NavigationProperty Name="City" Relationship="MovieScheduleStatsModel.FK_CitySource_City1" FromRole="CitySource" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="Cities" Relationship="MovieScheduleStatsModel.FK_City_Country" FromRole="Country" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Distributor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Info" MaxLength="512" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Url" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="LastUpdate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="Version" Nullable="false" />
+          <NavigationProperty Name="Movies" Relationship="MovieScheduleStatsModel.DistributorMovie" FromRole="Distributor" ToRole="Movie" />
+          <Property Type="String" Name="DisplayName" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Users" Relationship="MovieScheduleStatsModel.FK_User_Distributor" FromRole="Distributor" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Source">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CityId" />
+          <Property Type="Int32" Name="MovieId" />
+          <Property Type="Int32" Name="CinemaId" />
+          <Property Type="String" Name="Parameter" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TargetSite" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="URL" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Text" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="TargetSiteId" Nullable="false" />
+          <NavigationProperty Name="TargetSite1" Relationship="MovieScheduleStatsModel.FK_Source_TargetSite" FromRole="Source" ToRole="TargetSite" />
+          <NavigationProperty Name="Movie" Relationship="MovieScheduleStatsModel.FK_Source_Movie" FromRole="Source" ToRole="Movie" />
+          <NavigationProperty Name="City" Relationship="MovieScheduleStatsModel.FK_Source_City" FromRole="Source" ToRole="City" />
+          <Property Type="String" Name="OriginalCity" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cinema" Relationship="MovieScheduleStatsModel.FK_Source_Cinema" FromRole="Source" ToRole="Cinema" />
+        </EntityType>
+        <EntityType Name="TargetSite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Shortcut" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CinemaSources" Relationship="MovieScheduleStatsModel.FK_CinemaSource_TargetSite" FromRole="TargetSite" ToRole="CinemaSource" />
+          <NavigationProperty Name="CitySources" Relationship="MovieScheduleStatsModel.FK_CitySource_TargetSite" FromRole="TargetSite" ToRole="CitySource" />
+          <NavigationProperty Name="Sources" Relationship="MovieScheduleStatsModel.FK_Source_TargetSite" FromRole="TargetSite" ToRole="Source" />
+          <NavigationProperty Name="ParseRunInfoes" Relationship="MovieScheduleStatsModel.FK_ParseRunInfo_TargetSite" FromRole="TargetSite" ToRole="ParseRunInfo" />
+          <NavigationProperty Name="MovieSources" Relationship="MovieScheduleStatsModel.FK_MovieSource_TargetSite" FromRole="TargetSite" ToRole="MovieSource" />
+          <NavigationProperty Name="ShowtimeSnapshots" Relationship="MovieScheduleStatsModel.FK_ShowtimesSnapshot_TargetSite" FromRole="TargetSite" ToRole="ShowtimeSnapshot" />
+          <NavigationProperty Name="Showtimes" Relationship="MovieScheduleStatsModel.FK_Showtime_TargetSite" FromRole="TargetSite" ToRole="Showtime" />
+          <Property Type="Int32" Name="Priority" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CinemaSource_TargetSite">
+          <End Type="MovieScheduleStatsModel.TargetSite" Role="TargetSite" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.CinemaSource" Role="CinemaSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CinemaSource">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitySource_TargetSite">
+          <End Type="MovieScheduleStatsModel.TargetSite" Role="TargetSite" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.CitySource" Role="CitySource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CitySource">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Source_TargetSite">
+          <End Type="MovieScheduleStatsModel.TargetSite" Role="TargetSite" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.Source" Role="Source" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Source">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OriginalTitle" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ReleaseDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="Archived" Nullable="false" />
+          <Property Type="String" Name="Format" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="PreviewDate" Precision="3" />
+          <NavigationProperty Name="Sources" Relationship="MovieScheduleStatsModel.FK_Source_Movie" FromRole="Movie" ToRole="Source" />
+          <NavigationProperty Name="Distributors" Relationship="MovieScheduleStatsModel.DistributorMovie" FromRole="Movie" ToRole="Distributor" />
+          <Property Type="String" Name="URL" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="Suspended" Nullable="false" />
+          <Property Type="DateTime" Name="ReleaseDateGlobal" Precision="3" />
+          <NavigationProperty Name="MovieSources" Relationship="MovieScheduleStatsModel.FK_MovieSource_Movie" FromRole="Movie" ToRole="MovieSource" />
+          <NavigationProperty Name="ShowtimeSnapshots" Relationship="MovieScheduleStatsModel.FK_ShowtimesSnapshot_Movie" FromRole="Movie" ToRole="ShowtimeSnapshot" />
+          <NavigationProperty Name="Showtimes" Relationship="MovieScheduleStatsModel.FK_Showtime_Movie" FromRole="Movie" ToRole="Showtime" />
+        </EntityType>
+        <Association Name="FK_Source_Movie">
+          <End Type="MovieScheduleStatsModel.Movie" Role="Movie" Multiplicity="0..1" />
+          <End Type="MovieScheduleStatsModel.Source" Role="Source" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Source">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DistributorMovie">
+          <End Type="MovieScheduleStatsModel.Distributor" Role="Distributor" Multiplicity="*" />
+          <End Type="MovieScheduleStatsModel.Movie" Role="Movie" Multiplicity="*" />
+        </Association>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CountryId" Nullable="false" />
+          <Property Type="Int32" Name="CityId" />
+          <NavigationProperty Name="Country" Relationship="MovieScheduleStatsModel.FK_City_Country" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="CitySources" Relationship="MovieScheduleStatsModel.FK_CitySource_City1" FromRole="City" ToRole="CitySource" />
+          <NavigationProperty Name="Satellites" Relationship="MovieScheduleStatsModel.FK_Satellites" FromRole="City" ToRole="City1" />
+          <NavigationProperty Name="SatelliteTo" Relationship="MovieScheduleStatsModel.FK_Satellites" FromRole="City1" ToRole="City" />
+          <NavigationProperty Name="Sources" Relationship="MovieScheduleStatsModel.FK_Source_City" FromRole="City" ToRole="Source" />
+          <Property Type="Int32" Name="FederalDistrictId" />
+          <NavigationProperty Name="FederalDistrict" Relationship="MovieScheduleStatsModel.FK_City_FederalDistrict" FromRole="City" ToRole="FederalDistrict" />
+          <NavigationProperty Name="Cinemas" Relationship="MovieScheduleStatsModel.FK_Cinema_City" FromRole="City" ToRole="Cinema" />
+        </EntityType>
+        <Association Name="FK_City_Country">
+          <End Type="MovieScheduleStatsModel.Country" Role="Country" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CitySource_City1">
+          <End Type="MovieScheduleStatsModel.City" Role="City" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.CitySource" Role="CitySource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CitySource">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Satellites">
+          <End Type="MovieScheduleStatsModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="MovieScheduleStatsModel.City" Role="City1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City1">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Source_City">
+          <End Type="MovieScheduleStatsModel.City" Role="City" Multiplicity="0..1" />
+          <End Type="MovieScheduleStatsModel.Source" Role="Source" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Source">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ParseRun">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Started" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="Completed" Precision="3" />
+          <Property Type="Int32" Name="ShowtimesCount" Nullable="false" />
+          <NavigationProperty Name="ParseRunInfoes" Relationship="MovieScheduleStatsModel.FK_ParseRunInfo_ParseRun" FromRole="ParseRun" ToRole="ParseRunInfo" />
+          <NavigationProperty Name="ShowtimeSnapshots" Relationship="MovieScheduleStatsModel.FK_ShowtimeSnapshot_ParseRun" FromRole="ParseRun" ToRole="ShowtimeSnapshot" />
+          <NavigationProperty Name="Showtimes" Relationship="MovieScheduleStatsModel.FK_Showtime_ParseRun" FromRole="ParseRun" ToRole="Showtime" />
+        </EntityType>
+        <EntityType Name="ParseRunInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="ParseRunId" Nullable="false" />
+          <Property Type="Int32" Name="TargetSiteId" Nullable="false" />
+          <Property Type="Int32" Name="ShowtimesCountNew" Nullable="false" />
+          <Property Type="Int32" Name="ShowtimesCountUpdated" Nullable="false" />
+          <NavigationProperty Name="ParseRun" Relationship="MovieScheduleStatsModel.FK_ParseRunInfo_ParseRun" FromRole="ParseRunInfo" ToRole="ParseRun" />
+          <NavigationProperty Name="TargetSite" Relationship="MovieScheduleStatsModel.FK_ParseRunInfo_TargetSite" FromRole="ParseRunInfo" ToRole="TargetSite" />
+        </EntityType>
+        <Association Name="FK_ParseRunInfo_ParseRun">
+          <End Type="MovieScheduleStatsModel.ParseRun" Role="ParseRun" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.ParseRunInfo" Role="ParseRunInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParseRun">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParseRunInfo">
+              <PropertyRef Name="ParseRunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParseRunInfo_TargetSite">
+          <End Type="MovieScheduleStatsModel.TargetSite" Role="TargetSite" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.ParseRunInfo" Role="ParseRunInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParseRunInfo">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Feature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="MovieScheduleStatsModel.UserFeature" FromRole="Feature" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PasswordHash" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Created" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Features" Relationship="MovieScheduleStatsModel.UserFeature" FromRole="User" ToRole="Feature" />
+          <Property Type="String" Name="Email" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="DistributorId" />
+          <NavigationProperty Name="Distributor" Relationship="MovieScheduleStatsModel.FK_User_Distributor" FromRole="User" ToRole="Distributor" />
+        </EntityType>
+        <Association Name="UserFeature">
+          <End Type="MovieScheduleStatsModel.Feature" Role="Feature" Multiplicity="*" />
+          <End Type="MovieScheduleStatsModel.User" Role="User" Multiplicity="*" />
+        </Association>
+        <EntityType Name="FederalDistrict">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="MovieScheduleStatsModel.FK_City_FederalDistrict" FromRole="FederalDistrict" ToRole="City" />
+        </EntityType>
+        <Association Name="FK_City_FederalDistrict">
+          <End Type="MovieScheduleStatsModel.FederalDistrict" Role="FederalDistrict" Multiplicity="0..1" />
+          <End Type="MovieScheduleStatsModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FederalDistrict">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="FederalDistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CinemaNetwork">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cinemas" Relationship="MovieScheduleStatsModel.FK_Cinema_CinemaNetwork" FromRole="CinemaNetwork" ToRole="Cinema" />
+          </EntityType>
+        <EntityType Name="Cinema">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CityId" Nullable="false" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="MasterListBased" Nullable="false" />
+          <Property Type="String" Name="OriginalCity" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CinemaNetworkId" />
+          <NavigationProperty Name="CinemaNetwork" Relationship="MovieScheduleStatsModel.FK_Cinema_CinemaNetwork" FromRole="Cinema" ToRole="CinemaNetwork" />
+          <NavigationProperty Name="City" Relationship="MovieScheduleStatsModel.FK_Cinema_City" FromRole="Cinema" ToRole="City" />
+          <NavigationProperty Name="CinemaSources" Relationship="MovieScheduleStatsModel.FK_CinemaSource_Cinema" FromRole="Cinema" ToRole="CinemaSource" />
+          <NavigationProperty Name="Sources" Relationship="MovieScheduleStatsModel.FK_Source_Cinema" FromRole="Cinema" ToRole="Source" />
+          <NavigationProperty Name="ShowtimeSnapshots" Relationship="MovieScheduleStatsModel.FK_ShowtimesSnapshot_Cinema" FromRole="Cinema" ToRole="ShowtimeSnapshot" />
+          <NavigationProperty Name="Showtimes" Relationship="MovieScheduleStatsModel.FK_Showtime_Cinema" FromRole="Cinema" ToRole="Showtime" />
+          <Property Type="Boolean" Name="Enabled" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cinema_CinemaNetwork">
+          <End Type="MovieScheduleStatsModel.CinemaNetwork" Role="CinemaNetwork" Multiplicity="0..1" />
+          <End Type="MovieScheduleStatsModel.Cinema" Role="Cinema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CinemaNetwork">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cinema">
+              <PropertyRef Name="CinemaNetworkId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cinema_City">
+          <End Type="MovieScheduleStatsModel.City" Role="City" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.Cinema" Role="Cinema" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cinema">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CinemaSource_Cinema">
+          <End Type="MovieScheduleStatsModel.Cinema" Role="Cinema" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.CinemaSource" Role="CinemaSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinema">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CinemaSource">
+              <PropertyRef Name="CinemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Source_Cinema">
+          <End Type="MovieScheduleStatsModel.Cinema" Role="Cinema" Multiplicity="0..1" />
+          <End Type="MovieScheduleStatsModel.Source" Role="Source" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinema">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Source">
+              <PropertyRef Name="CinemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MovieSource">
+          <Key>
+            <PropertyRef Name="MovieId" />
+            <PropertyRef Name="TargetSiteId" />
+          </Key>
+          <Property Type="Int32" Name="MovieId" Nullable="false" />
+          <Property Type="Int32" Name="TargetSiteId" Nullable="false" />
+          <Property Type="String" Name="URL" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Parameter" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Movie" Relationship="MovieScheduleStatsModel.FK_MovieSource_Movie" FromRole="MovieSource" ToRole="Movie" />
+          <NavigationProperty Name="TargetSite" Relationship="MovieScheduleStatsModel.FK_MovieSource_TargetSite" FromRole="MovieSource" ToRole="TargetSite" />
+        </EntityType>
+        <Association Name="FK_MovieSource_Movie">
+          <End Type="MovieScheduleStatsModel.Movie" Role="Movie" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.MovieSource" Role="MovieSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovieSource">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MovieSource_TargetSite">
+          <End Type="MovieScheduleStatsModel.TargetSite" Role="TargetSite" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.MovieSource" Role="MovieSource" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovieSource">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Distributor">
+          <End Type="MovieScheduleStatsModel.Distributor" Role="Distributor" Multiplicity="0..1" />
+          <End Type="MovieScheduleStatsModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distributor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="DistributorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ShowtimeSnapshot">
+          <Key>
+            <PropertyRef Name="CinemaId" />
+            <PropertyRef Name="MovieId" />
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="TargetSiteId" />
+            <PropertyRef Name="ParseRunId" />
+            <PropertyRef Name="SessionsFormat" />
+          </Key>
+          <Property Type="Int32" Name="CinemaId" Nullable="false" />
+          <Property Type="Int32" Name="MovieId" Nullable="false" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="0" />
+          <Property Type="Int32" Name="TargetSiteId" Nullable="false" />
+          <Property Type="Int32" Name="ParseRunId" Nullable="false" />
+          <Property Type="Int32" Name="SessionsCount" Nullable="false" />
+          <Property Type="String" Name="Sessions" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SessionsFormat" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cinema" Relationship="MovieScheduleStatsModel.FK_ShowtimesSnapshot_Cinema" FromRole="ShowtimeSnapshot" ToRole="Cinema" />
+          <NavigationProperty Name="Movie" Relationship="MovieScheduleStatsModel.FK_ShowtimesSnapshot_Movie" FromRole="ShowtimeSnapshot" ToRole="Movie" />
+          <NavigationProperty Name="ParseRun" Relationship="MovieScheduleStatsModel.FK_ShowtimeSnapshot_ParseRun" FromRole="ShowtimeSnapshot" ToRole="ParseRun" />
+          <NavigationProperty Name="TargetSite" Relationship="MovieScheduleStatsModel.FK_ShowtimesSnapshot_TargetSite" FromRole="ShowtimeSnapshot" ToRole="TargetSite" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <Association Name="FK_ShowtimesSnapshot_Cinema">
+          <End Type="MovieScheduleStatsModel.Cinema" Role="Cinema" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.ShowtimeSnapshot" Role="ShowtimeSnapshot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinema">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowtimeSnapshot">
+              <PropertyRef Name="CinemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowtimesSnapshot_Movie">
+          <End Type="MovieScheduleStatsModel.Movie" Role="Movie" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.ShowtimeSnapshot" Role="ShowtimeSnapshot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowtimeSnapshot">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowtimeSnapshot_ParseRun">
+          <End Type="MovieScheduleStatsModel.ParseRun" Role="ParseRun" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.ShowtimeSnapshot" Role="ShowtimeSnapshot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParseRun">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowtimeSnapshot">
+              <PropertyRef Name="ParseRunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShowtimesSnapshot_TargetSite">
+          <End Type="MovieScheduleStatsModel.TargetSite" Role="TargetSite" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.ShowtimeSnapshot" Role="ShowtimeSnapshot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShowtimeSnapshot">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Showtime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SessionsRaw" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="CinemaId" Nullable="false" />
+          <Property Type="String" Name="Additional" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="0" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="MovieId" Nullable="false" />
+          <Property Type="Int32" Name="SessionsCount" Nullable="false" />
+          <Property Type="String" Name="URL" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SessionsFormat" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="TargetSiteId" Nullable="false" />
+          <Property Type="Boolean" Name="PartialyAdded" Nullable="false" />
+          <Property Type="Int32" Name="ParseRunId" Nullable="false" />
+          <Property Type="Int32" Name="CityId" />
+          <Property Type="DateTime" Name="LastUpdate" Precision="3" />
+          <NavigationProperty Name="Cinema" Relationship="MovieScheduleStatsModel.FK_Showtime_Cinema" FromRole="Showtime" ToRole="Cinema" />
+          <NavigationProperty Name="Movie" Relationship="MovieScheduleStatsModel.FK_Showtime_Movie" FromRole="Showtime" ToRole="Movie" />
+          <NavigationProperty Name="ParseRun" Relationship="MovieScheduleStatsModel.FK_Showtime_ParseRun" FromRole="Showtime" ToRole="ParseRun" />
+          <NavigationProperty Name="TargetSite" Relationship="MovieScheduleStatsModel.FK_Showtime_TargetSite" FromRole="Showtime" ToRole="TargetSite" />
+          <NavigationProperty Name="Sessions" Relationship="MovieScheduleStatsModel.ShowtimeSession" FromRole="Showtime" ToRole="Session" />
+        </EntityType>
+        <Association Name="FK_Showtime_Cinema">
+          <End Type="MovieScheduleStatsModel.Cinema" Role="Cinema" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.Showtime" Role="Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cinema">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="CinemaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Showtime_Movie">
+          <End Type="MovieScheduleStatsModel.Movie" Role="Movie" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.Showtime" Role="Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="MovieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Showtime_ParseRun">
+          <End Type="MovieScheduleStatsModel.ParseRun" Role="ParseRun" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.Showtime" Role="Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParseRun">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="ParseRunId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Showtime_TargetSite">
+          <End Type="MovieScheduleStatsModel.TargetSite" Role="TargetSite" Multiplicity="1" />
+          <End Type="MovieScheduleStatsModel.Showtime" Role="Showtime" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TargetSite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Showtime">
+              <PropertyRef Name="TargetSiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Session">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Time" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
+          <Property Type="Int32" Name="Hour" Nullable="false" />
+          <Property Type="Int32" Name="Minute" Nullable="false" />
+          <Property Type="Int32" Name="OrderIndex" />
+          <NavigationProperty Name="Showtimes" Relationship="MovieScheduleStatsModel.ShowtimeSession" FromRole="Session" ToRole="Showtime" />
+        </EntityType>
+        <Association Name="ShowtimeSession">
+          <End Type="MovieScheduleStatsModel.Session" Role="Session" Multiplicity="*" />
+          <End Type="MovieScheduleStatsModel.Showtime" Role="Showtime" Multiplicity="*" />
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MovieScheduleStatsModelStoreContainer" CdmEntityContainer="MovieScheduleStatsEntities">
+          <EntitySetMapping Name="CinemaSources">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.CinemaSource">
+              <MappingFragment StoreEntitySet="CinemaSource">
+                <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TargetSiteId" ColumnName="TargetSiteId" />
+                <ScalarProperty Name="CinemaId" ColumnName="CinemaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CitySources">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.CitySource">
+              <MappingFragment StoreEntitySet="CitySource">
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+                <ScalarProperty Name="TargetSiteId" ColumnName="TargetSiteId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distributors">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.Distributor">
+              <MappingFragment StoreEntitySet="Distributor">
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sources">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.Source">
+              <MappingFragment StoreEntitySet="Source">
+                <ScalarProperty Name="OriginalCity" ColumnName="OriginalCity" />
+                <ScalarProperty Name="TargetSiteId" ColumnName="TargetSiteId" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="TargetSite" ColumnName="TargetSite" />
+                <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+                <ScalarProperty Name="CinemaId" ColumnName="CinemaId" />
+                <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TargetSites">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.TargetSite">
+              <MappingFragment StoreEntitySet="TargetSite">
+                <ScalarProperty Name="Priority" ColumnName="Priority" />
+                <ScalarProperty Name="Shortcut" ColumnName="Shortcut" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movies">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.Movie">
+              <MappingFragment StoreEntitySet="Movie">
+                <ScalarProperty Name="ReleaseDateGlobal" ColumnName="ReleaseDateGlobal" />
+                <ScalarProperty Name="Suspended" ColumnName="Suspended" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="PreviewDate" ColumnName="PreviewDate" />
+                <ScalarProperty Name="Format" ColumnName="Format" />
+                <ScalarProperty Name="Archived" ColumnName="Archived" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ReleaseDate" ColumnName="ReleaseDate" />
+                <ScalarProperty Name="OriginalTitle" ColumnName="OriginalTitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="DistributorMovie" TypeName="MovieScheduleStatsModel.DistributorMovie" StoreEntitySet="DistributorMovie">
+            <EndProperty Name="Movie">
+              <ScalarProperty Name="Id" ColumnName="MovieId" />
+            </EndProperty>
+            <EndProperty Name="Distributor">
+              <ScalarProperty Name="Id" ColumnName="DistributorId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="FederalDistrictId" ColumnName="FederalDistrictId" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParseRuns">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.ParseRun">
+              <MappingFragment StoreEntitySet="ParseRun">
+                <ScalarProperty Name="ShowtimesCount" ColumnName="ShowtimesCount" />
+                <ScalarProperty Name="Completed" ColumnName="Completed" />
+                <ScalarProperty Name="Started" ColumnName="Started" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParseRunInfoes">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.ParseRunInfo">
+              <MappingFragment StoreEntitySet="ParseRunInfo">
+                <ScalarProperty Name="ShowtimesCountUpdated" ColumnName="ShowtimesCountUpdated" />
+                <ScalarProperty Name="ShowtimesCountNew" ColumnName="ShowtimesCountNew" />
+                <ScalarProperty Name="TargetSiteId" ColumnName="TargetSiteId" />
+                <ScalarProperty Name="ParseRunId" ColumnName="ParseRunId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Features">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.Feature">
+              <MappingFragment StoreEntitySet="Feature">
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="DistributorId" ColumnName="DistributorId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="UserFeature" TypeName="MovieScheduleStatsModel.UserFeature" StoreEntitySet="UserFeature">
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="Feature">
+              <ScalarProperty Name="Id" ColumnName="FeatureId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="FederalDistricts">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.FederalDistrict">
+              <MappingFragment StoreEntitySet="FederalDistrict">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CinemaNetworks">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.CinemaNetwork">
+              <MappingFragment StoreEntitySet="CinemaNetwork">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cinemas">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.Cinema">
+              <MappingFragment StoreEntitySet="Cinema">
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="CinemaNetworkId" ColumnName="CinemaNetworkId" />
+                <ScalarProperty Name="OriginalCity" ColumnName="OriginalCity" />
+                <ScalarProperty Name="MasterListBased" ColumnName="MasterListBased" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MovieSources">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.MovieSource">
+              <MappingFragment StoreEntitySet="MovieSource">
+                <ScalarProperty Name="Parameter" ColumnName="Parameter" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="TargetSiteId" ColumnName="TargetSiteId" />
+                <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShowtimeSnapshots">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.ShowtimeSnapshot">
+              <MappingFragment StoreEntitySet="ShowtimeSnapshot">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SessionsFormat" ColumnName="SessionsFormat" />
+                <ScalarProperty Name="Sessions" ColumnName="Sessions" />
+                <ScalarProperty Name="SessionsCount" ColumnName="SessionsCount" />
+                <ScalarProperty Name="ParseRunId" ColumnName="ParseRunId" />
+                <ScalarProperty Name="TargetSiteId" ColumnName="TargetSiteId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+                <ScalarProperty Name="CinemaId" ColumnName="CinemaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Showtimes">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.Showtime">
+              <MappingFragment StoreEntitySet="Showtime">
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="ParseRunId" ColumnName="ParseRunId" />
+                <ScalarProperty Name="PartialyAdded" ColumnName="PartialyAdded" />
+                <ScalarProperty Name="TargetSiteId" ColumnName="TargetSiteId" />
+                <ScalarProperty Name="SessionsFormat" ColumnName="SessionsFormat" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="SessionsCount" ColumnName="SessionsCount" />
+                <ScalarProperty Name="MovieId" ColumnName="MovieId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Additional" ColumnName="Additional" />
+                <ScalarProperty Name="CinemaId" ColumnName="CinemaId" />
+                <ScalarProperty Name="SessionsRaw" ColumnName="SessionsRaw" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sessions">
+            <EntityTypeMapping TypeName="MovieScheduleStatsModel.Session">
+              <MappingFragment StoreEntitySet="Session">
+                <ScalarProperty Name="OrderIndex" ColumnName="OrderIndex" />
+                <ScalarProperty Name="Minute" ColumnName="Minute" />
+                <ScalarProperty Name="Hour" ColumnName="Hour" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ShowtimeSession" TypeName="MovieScheduleStatsModel.ShowtimeSession" StoreEntitySet="ShowtimeSession">
+            <EndProperty Name="Showtime">
+              <ScalarProperty Name="Id" ColumnName="ShowtimeId" />
+            </EndProperty>
+            <EndProperty Name="Session">
+              <ScalarProperty Name="Id" ColumnName="SessionId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

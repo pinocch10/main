@@ -1,0 +1,18 @@
+﻿@model MovieSchedule.Web.Models.ShowtimeModel
+@{ Layout = null;}
+@if (Model != null)
+{
+    <td>@Model.City</td>
+    <td>@Model.CinemaName</td>
+    if (Model.Format == "2D")
+    {
+    <td title="Формат 2D может включать в себя 35мм, dvd и blu-ray">@Model.Format</td>
+    }
+    else
+    {
+    <td>@Model.Format</td>
+    }
+    <td>@Model.SessionsCount</td>
+    <td>@Model.Sessions</td>
+}
+

@@ -1,0 +1,325 @@
+﻿@using System.Web.Mvc.Html
+@using MovieSchedule.Data
+@using MovieSchedule.Web.Models
+
+@model ScheduleModel
+
+@{
+    ViewBag.Title = "Сеансы";
+    Layout = "~/Views/Shared/_LayoutInner.cshtml";
+}
+@section styles
+{
+    @*<link rel="stylesheet" href="@Url.Content("~/Content/docsupport/style.css")">
+    <link rel="stylesheet" href="@Url.Content("~/Content/docsupport/prism.css")">*@
+    <link rel="stylesheet" href="@Url.Content("~/Content/chosen.css")">
+    <link rel="stylesheet" href="http://twitter.github.io/typeahead.js/css/examples.css">
+    <style type="text/css" media="all">
+        /* fix rtl for demo */
+        .chosen-rtl .chosen-drop {
+            left: -9000px;
+        }
+    </style>
+}
+<!--<div class="alert alert-danger" role="alert">
+    <strong>Oh snap!</strong>
+    Change a few things up and try submitting again.
+</div>-->
+
+@*<h1 class="page-header">@ViewBag.Title</h1>*@
+
+<!--div class="btn-group">
+    <button type="button" class="btn btn-default">Action</button>
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+        <span class="caret"></span>
+        <span class="sr-only">Toggle Dropdown</span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Another action</a></li>
+        <li><a href="#">Something else here</a></li>
+        <li class="divider"></li>
+        <li><a href="#">Separated link</a></li>
+    </ul>
+</div-->
+
+@*<div id="custom-templates">
+    <input id="extraSearch" name="extraSearch" class="typeahead" type="text" placeholder="Для поиска по всем фильмам начните вводить название">
+</div>*@
+
+<div>@Html.DropDownListFor(list => list.AllMovies, new SelectList(Model.AllMovies, "CombinedId", "DisplayTitle"), "Выберите фильм", new { style = "width:550px" })<span class="label label-default" style="margin-left: 20px">или выберите дистрибьютора</span></div>
+
+@Html.DropDownListFor(list => list.Distributors, new SelectList(Model.Distributors, "Id", "DisplayName"), "Выберите дистрибьютора", new { style = "width:250px" })
+
+@Html.DropDownList("Movies", new SelectList(string.Empty, "Value", "Text"), "Выберите фильм", new { style = "width:250px" })
+
+@Html.DropDownList("Dates", new SelectList(string.Empty, "Value", "Text"), "Выберите дату", new { style = "width:250px" })
+
+<button class="btn btn-primary" type="button" id="btnSubmit">Просмотр</button>
+<div id="preloader">
+    <img src="@Url.Content("~/Content/images/preloader.GIF")" alt="Загрузка"/>
+</div>
+<div id="error" class="alert alert-danger" role="alert" style="display: none">
+    Произошла ошибка при заборе данных. Попробуйте повторить запрос или свяжитесь с нами.
+</div>
+<div id="showtimes"></div>
+
+<!--<div id="datePicker"></div>-->
+@section scripts
+{
+
+    <script src="@Url.Content("~/Scripts/typeahead.bundle.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/MSS.common.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/chosen.jquery.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Content/docsupport/prism.js")" charset="utf-8"></script>
+
+    <script src="@Url.Content("~/Scripts/bootstrap-datepicker.js")"></script>
+    <script src="@Url.Content("~/Scripts/bootstrap-datepicker.ru.js")"></script>
+    <script>
+
+        function populateShowtimes(movieId, sessionDate, federalDistrictId, cityId, cinemaId, cinemaNetworkId, countryId) {
+
+            $("#showtimes").empty();
+            $("#preloader").show();
+            $("#error").hide();
+            if (countryId == 0) countryId = 1;
+            var filter = {
+                MovieId: movieId,
+                SessionDate: sessionDate,
+                FederalDistrictId: federalDistrictId,
+                CityId: cityId,
+                CinemaId: cinemaId,
+                CinemaNetworkId: cinemaNetworkId,
+                CountryId: countryId
+            };
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("Showtimes")',
+                dataType: 'html',
+                contentType: 'application/json',
+                data: JSON.stringify(filter),
+                //JSON.stringify(filter),
+                success:
+
+            function(showtimes) {
+                $("#showtimes").html(showtimes);
+
+                if (federalDistrictId != 0)
+                    $("#FederalDistricts option[value=" + federalDistrictId + "]").attr('selected', 'selected');
+                if (cityId != 0)
+                    $("#Cities option[value=" + cityId + "]").attr('selected', 'selected');
+                if (cinemaId != 0)
+                    $("#Cinemas option[value=" + cinemaId + "]").attr('selected', 'selected');
+                if (cinemaNetworkId != 0)
+                    $("#CinemaNetworks option[value=" + cinemaNetworkId + "]").attr('selected', 'selected');
+                if (countryId != 0)
+                    $("#Countries option[value=" + countryId + "]").attr('selected', 'selected');
+
+                $("#FederalDistricts").change(function() {
+                    populateShowtimes($("#Movies").val(), $("#Dates").val(), $("#FederalDistricts").val(), 0, 0, 0, 0);
+                });
+                $("#Cities").change(function() {
+                    populateShowtimes($("#Movies").val(), $("#Dates").val(), 0, $("#Cities").val(), 0, 0, 0);
+                });
+                $("#Cinemas").change(function() {
+                    populateShowtimes($("#Movies").val(), $("#Dates").val(), 0, 0, $("#Cinemas").val(), 0, 0);
+                });
+                $("#CinemaNetworks").change(function() {
+                    populateShowtimes($("#Movies").val(), $("#Dates").val(), 0, 0, 0, $("#CinemaNetworks").val(), 0);
+                });
+                $("#Countries").change(function() {
+                    populateShowtimes($("#Movies").val(), $("#Dates").val(), 0, 0, 0, 0, $("#Countries").val());
+                });
+                $("#btnReset").click(function() {
+                    populateShowtimes($("#Movies").val(), $("#Dates").val(), 0, 0, 0, 0, 0);
+                });
+
+                $("#Countries").chosen({ no_results_text: "Ничего не найдено" });
+                $("#FederalDistricts").chosen({ no_results_text: "Ничего не найдено" });
+                $("#Cities").chosen({ no_results_text: "Ничего не найдено" });
+                $("#Cinemas").chosen({ no_results_text: "Ничего не найдено" });
+                $("#CinemaNetworks").chosen({ no_results_text: "Ничего не найдено" });
+                $("#Countries").chosen({ no_results_text: "Ничего не найдено" });
+
+                $("#preloader").hide();
+            },
+                error: function(ex) {
+                    //alert('Failed to retrieve movies.' + ex);
+                    $("#error").show();
+                    $("#preloader").hide();
+                }
+            });
+        }
+
+        $("#btnSubmit").click(function() {
+            populateShowtimes($("#Movies").val(), $("#Dates").val(), 0, 0, 0, 0, 0);
+        });
+        $("body").on("click", "#btnExport", function() {
+            var cinemaNetworks = 0;
+            if ($("#CinemaNetworks") && $("#CinemaNetworks")[0])
+                cinemaNetworks = $("#CinemaNetworks")[0].selectedIndex != 0 ? $("#CinemaNetworks").val() : 0
+            prepareExportLink($("#Movies").val(), $("#Dates").val(),
+                $("#FederalDistricts")[0].selectedIndex != 0 ? $("#FederalDistricts").val() : 0,
+                $("#Cities")[0].selectedIndex != 0 ? $("#Cities").val() : 0,
+                $("#Cinemas")[0].selectedIndex != 0 ? $("#Cinemas").val() : 0,
+                cinemaNetworks);
+        });
+
+        function prepareExportLink(movieId, date, federalDistrictId, cityId, cinemaId, cinemaNetworkId) {
+            var url = replaceAll("&amp;", "&", "@Url.Action("Export", "Schedule", new { movieId = "param-movieId", sessionDate = "param-sessionDate", federalDistrictId = "param-federalDistrictId", cityId = "param-cityId", cinemaId = "param-cinemaId", cinemaNetworkId = "param-cinemaNetworkId " })");
+            url = url
+                .replace("param-movieId", movieId)
+                .replace("param-sessionDate", date)
+                .replace("param-federalDistrictId", federalDistrictId)
+                .replace("param-cityId", cityId)
+                .replace("param-cinemaId", cinemaId)
+                .replace("param-cinemaNetworkId", cinemaNetworkId);
+
+            window.location = url;
+        }
+
+        //$("#FederalDistricts").change(function () {
+        //    populateShowtimes($("#Movies").val(), $("#Dates").val(), $("#FederalDistricts").val(), 0, 0);
+        //});
+        //$("#Cities").change(function () {
+        //    populateShowtimes($("#Movies").val(), $("#Dates").val(), 0, $("#Cities").val(), 0);
+        //});
+        //$("#Cinemas").change(function () {
+        //    populateShowtimes($("#Movies").val(), $("#Dates").val(), 0, 0, $("Cinemas").val());
+        //});
+
+        var substringMatcher = function(strs) {
+            return function findMatches(q, cb) {
+                var matches, substrRegex;
+
+                // an array that will be populated with substring matches
+                matches = [];
+
+                // regex used to determine if a string contains the substring `q`
+                substrRegex = new RegExp(q, 'i');
+
+                // iterate through the pool of strings and for any string that
+                // contains the substring `q`, add it to the `matches` array
+                $.each(strs, function(i, str) {
+                    if (substrRegex.test(str)) {
+                        // the typeahead jQuery plugin expects suggestions to a
+                        // JavaScript object, refer to typeahead docs for more info
+                        matches.push({ value: str });
+                    }
+                });
+
+                cb(matches);
+            };
+        };
+        var preselectedMovieId = 0;
+
+        $(document).ready(function() {
+
+            $("#Distributors").chosen({ no_results_text: "Ничего не найдено" });
+            $("#Movies").chosen({ no_results_text: "Ничего не найдено" });
+            $("#Dates").chosen({ no_results_text: "Ничего не найдено" });
+            $("#AllMovies").chosen({ no_results_text: "Ничего не найдено" });
+            //Dropdownlist Selectedchange event
+            $("#AllMovies").change(function() {
+                var combinedId = $("#AllMovies").val();
+                var ids = combinedId.split("-");
+                var distrId = ids[0];
+                preselectedMovieId = ids[1];
+                $("#Distributors option").removeAttr('selected');
+                $("#Distributors option[value=" + distrId + "]").attr('selected', 'selected');
+                setSelectedIndex(document.getElementById("Distributors"), distrId);
+                $('#Distributors').trigger('change');
+                $("#Distributors").trigger("chosen:updated");
+            });
+
+            $("#Distributors").change(function() {
+                $("#Movies").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetDistributorMovies")', // we are calling json method
+                    dataType: 'json',
+                    data: { distributorId: $("#Distributors").val() },
+                    // here we are get value of selected distributor and passing same value
+                    //as input to json method GetDistributorMovies.
+                    success: function(states) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        $.each(states, function(i, state) {
+                            if (state.Value == preselectedMovieId) {
+                                $("#Movies").append('<option value="' + state.Value + '" selected="selected">' +
+                                    state.Text + '</option>');
+                            } else {
+                                $("#Movies").append('<option value="' + state.Value + '">' +
+                                    state.Text + '</option>');
+                            }
+                            // here we are adding option for States
+                        });
+                        $('#Movies').trigger('change');
+                    },
+                    error: function(ex) {
+                        alert('Failed to retrieve movies.' + ex);
+                    }
+                });
+                return false;
+            });
+
+            $("#Distributors option[value=" + @Model.User.DistributorId + "]").attr('selected', 'selected');
+            setSelectedIndex(document.getElementById("Distributors"), @Model.User.DistributorId);
+            console.log($('#Distributors').val());
+            console.log($('#Distributors').text());
+            $('#Distributors').trigger('change');
+            $("#Distributors").trigger("chosen:updated");
+            console.log($('#Distributors').val());
+            console.log($('#Distributors').text());
+            $("#Movies").change(function() {
+                preselectedMovieId = 0;
+                $("#Dates").empty();
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("GetMovieShowtimeDates")', // we are calling json method
+                    dataType: 'json',
+                    data: { movieId: $("#Movies").val() },
+                    // here we are get value of selected distributor and passing same value
+                    //as input to json method GetDistributorMovies.
+                    success: function(states) {
+                        // states contains the JSON formatted list
+                        // of states passed from the controller
+                        var d = new Date();
+                        var currDate = d.getDate();
+                        var currMonth = d.getMonth() + 1; //Months are zero based
+                        var currYear = d.getFullYear();
+                        var selected = false;
+                        var dateString = currYear + "-" + pad(currMonth, 2) + "-" + pad(currDate, 2);
+                        $.each(states, function(i, state) {
+                            $("#Dates").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                            if (!selected)
+                                if (state.Value == dateString || state.Value > dateString || states.count - 1 == i) {
+                                    $("#Dates option[value=" + state.Value + "]").attr('selected', 'selected');
+                                    selected = true;
+                                }
+                            // here we are adding option for States
+                        });
+                        //$("#Dates").val($("#Dates option:first").val());
+                        $('#Dates').trigger('change');
+                        $("#Movies").trigger("chosen:updated");
+
+
+                        $("#Dates option[value=" + dateString + "]").attr('selected', 'selected');
+
+                        $('#Dates').trigger('change');
+                        $("#Dates").trigger("chosen:updated");
+
+
+                    },
+                    error: function(ex) {
+                        alert('Failed to retrieve dates.' + ex);
+                    }
+                });
+                return false;
+            });
+            $("#Dates").change(function() {
+                $("#Dates").trigger("chosen:updated");
+            });
+        });
+    </script>
+}

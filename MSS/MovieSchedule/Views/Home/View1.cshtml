@@ -1,0 +1,43 @@
+﻿@model MovieSchedule.Web.Models.MovieScheduleModel
+
+@{
+    ViewBag.Title = "View1";
+}
+
+<h2>View1</h2>
+
+<fieldset>
+    <legend>MovieScheduleModel</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DistributorName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DistributorName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MovieTitle)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MovieTitle)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MovieReleaseDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MovieReleaseDate)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

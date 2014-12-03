@@ -1,0 +1,12 @@
+﻿@model System.Collections.Generic.List<MovieSchedule.Web.Models.CinemaModel>
+
+<h3>Выбыло кинотеатров: @Model.Count</h3>
+<table class="table table-striped">
+    @foreach (var cinema in Model)
+    {
+        <tr>
+            <td>@cinema.CityName</td>
+            <td>@cinema.CinemaName</td>
+        </tr>
+    }
+</table>

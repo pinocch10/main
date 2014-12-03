@@ -1,0 +1,141 @@
+﻿@model MovieSchedule.Web.Models.CompareModel
+
+@{
+    ViewBag.Title = "Compare";
+    Layout = "~/Views/Shared/_LayoutInner.cshtml";
+}
+
+@section styles
+{
+    <link rel="stylesheet" href="@Url.Content("~/Content/chosen.css")">
+    <link rel="stylesheet" href="http://twitter.github.io/typeahead.js/css/examples.css">
+    <style type="text/css" media="all">
+        /* fix rtl for demo */
+        .chosen-rtl .chosen-drop {
+            left: -9000px;
+        }
+    </style>
+}
+
+
+@Html.DropDownListFor(list => list.AllMovies, new SelectList(Model.AllMovies, "CombinedId", "DisplayTitle"), "Выберите фильм",
+new { style = "width:520px", id = "LeftMovies" })
+
+@Html.DropDownListFor(list => list.AllMovies, new SelectList(Model.AllMovies, "CombinedId", "DisplayTitle"), "Выберите фильм",
+new { style = "width:520px", id = "RightMovies" })
+
+<div style="text-align: center">
+    @Html.DropDownList("Dates", new SelectList(string.Empty, "Value", "Text"), "Выберите дату")
+    <button class="btn btn-link" type="button" id="btnCompare">Сравнить</button>
+</div>
+<div id="showtimes"></div>
+@section scripts
+{
+    <script src="@Url.Content("~/Scripts/chosen.jquery.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/MSS.common.js")" type="text/javascript"></script>
+    <script>
+        var leftMovieId = 0;
+        var rightMovieId = 0;
+
+        function getMovieId(combinedId) {
+            var ids = combinedId.split("-");
+            var distrId = ids[0];
+            return parseInt(ids[1]);
+        }
+
+        function getDates(movieIds) {
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetMoviesShowtimeDates")',
+                dataType: 'json',
+                contentType: 'application/json',
+                data: JSON.stringify(movieIds),
+                success: function (states) {
+                    var d = new Date();
+                    var currDate = d.getDate();
+                    var currMonth = d.getMonth() + 1; //Months are zero based
+                    var currYear = d.getFullYear();
+                    var selected = false;
+                    var dateString = currYear + "-" + pad(currMonth, 2) + "-" + pad(currDate, 2);
+                    $.each(states, function (i, state) {
+                        $("#Dates").append('<option value="' + state.Value + '">' + state.Text + '</option>');
+                        if (!selected)
+                            if (state.Value == dateString || state.Value > dateString || states.count - 1 == i) {
+                                $("#Dates option[value=" + state.Value + "]").attr('selected', 'selected');
+                                selected = true;
+                            }
+                    });
+                    $('#Dates').trigger('change');
+                    $("#Movies").trigger("chosen:updated");
+
+                    $("#Dates option[value=" + dateString + "]").attr('selected', 'selected');
+
+                    $('#Dates').trigger('change');
+                    $("#Dates").trigger("chosen:updated");
+                }
+            });
+        }
+
+        function getMovieIds() {
+            var data = new Array();
+
+            data[0] = leftMovieId;
+            data[1] = rightMovieId;
+
+            return data;
+        }
+        $("#btnCompare").click(function () {
+            if (leftMovieId != 0 && rightMovieId != 0) {
+                populateCompareShowtimes(leftMovieId, rightMovieId, $("#Dates").val(), 0);
+            }
+        });
+
+        function populateCompareShowtimes(leftMovieId, rightMovieId, sessionDate, countryId) {
+            $("#showtimes").empty();
+            $("#preloader").show();
+            $("#error").hide();
+            if (countryId == 0) countryId = 1;
+            var filter = {
+                MovieId: leftMovieId,
+                SecondMovieId: rightMovieId,
+                SessionDate: sessionDate,
+                CountryId: countryId
+            };
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("CompareShowtimes")',
+                dataType: 'html',
+                contentType: 'application/json',
+                data: JSON.stringify(filter),
+                success:
+            function (showtimes) {
+                $("#showtimes").html(showtimes);
+            },
+                error: function (ex) {
+                    alert('Failed to retrieve movies.' + ex);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $("#RightMovies").chosen({ no_results_text: "Ничего не найдено" });
+            $("#LeftMovies").chosen({ no_results_text: "Ничего не найдено" });
+            $("#Dates").chosen({ no_results_text: "Ничего не найдено" });
+
+            $("#LeftMovies").change(function () {
+                leftMovieId = getMovieId($("#LeftMovies").val());
+                if (rightMovieId != 0) {
+                    var ids = getMovieIds();
+                    getDates(ids);
+                }
+            });
+            $("#RightMovies").change(function () {
+                rightMovieId = getMovieId($("#RightMovies").val());
+                if (leftMovieId != 0) {
+                    var ids = getMovieIds();
+                    getDates(ids);
+                }
+            });
+        });
+    </script>
+}
